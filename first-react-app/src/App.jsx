@@ -9,8 +9,33 @@ import ShoppingList from './ShoppingList'
 import PropertyList from './PropertyList'
 import Clicker from './Clicker'
 import Form from './Form'
+import Counter from './Counter'
+import Toggler from './Toggler'
+import ToggleCounter from './ToggleCounter'
 import Slot from './Slot'
 import { StrictMode } from 'react'
+import TogglerCounter from './ToggleCounter'
+import ColorBoxGrid from "./ColorBoxGrid";
+import ColorBox from "./ColorBox";
+
+const colors = [
+  "#E53935",
+  "#E91E63",
+  "#9C27B0",
+  "#673AB7",
+  "#3F51B5",
+  "#2196F3",
+  "#03A9F4",
+  "#00BCD4",
+  "#009688",
+  "#4CAF50",
+  "#8BC34A",
+  "#CDDC39",
+  "#FFEB3B",
+  "#FFC107",
+  "#FF9800",
+  "#FF5722",
+];
 
 const data = [
   { id: 1, item : 'egg', quantity : 12, completed : false},
@@ -33,9 +58,13 @@ function App() {
 
   return (
     <div>
-      <Form />
+      {/* <ColorBox /> */}
+      <ColorBoxGrid colors={colors} />
+      {/* <TogglerCounter /> */}
+      {/* <Counter /> */}
+      {/* <Form />
       <Clicker message="HI!!" buttonText="Please Click ME" />
-      <Clicker message="Please Stop Click ME" buttonText="Do Not Click" />
+      <Clicker message="Please Stop Click ME" buttonText="Do Not Click" /> */}
       {/* <ShoppingList items={data}/> */}
       {/* <PropertyList properties={properties} /> */}
       {/* <Greeter person="Taeha"/>
