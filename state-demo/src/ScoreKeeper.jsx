@@ -1,26 +1,47 @@
 import { useState } from "react";
 
-const ScoreKeeper = () => {
-    const [scores, setScores] = useState({ p1Score: 0, p2Score: 0 });
-    function increaseP1Scores() {
-        // const newScores = { ...scores, p1Score: scores.p1Score + 1 };
-        setScores((oldScores) => {
-            return { ...oldScores, p1Score: oldScores.p1Score + 1 };
-        });
-    }
+const ScoreKeeper = ({ numPlayers = 3, target = 3 }) => {
+    const [scores, setScores] = useState(new Array(numPlayers).fill(0));
+    // function incrementScore(idx) {
+    //     // const newScores = { ...scores, p1Score: scores.p1Score + 1 };
+    //     setScores((prevScores) => {
+    //         const copy = [...prevScores];
+    //         copy[idx] += 1;
+    //         return copy;
+    //     });
+    // }
 
-    function increaseP2Scores() {
+    const incrementScore = (idx) => {
         // const newScores = { ...scores, p1Score: scores.p1Score + 1 };
-        setScores((oldScores) => {
-            return { ...oldScores, p2Score: oldScores.p2Score + 1 };
+        setScores((prevScores) => {
+            return prevScores.map((score, i) => {
+                if (i === idx) return score + 1;
+                return score;
+            });
         });
-    }
+    };
+
+    const reset = () => {
+        setScores(new Array(numPlayers).fill(0));
+    };
+
     return (
         <div>
-            <p>Player 1: {scores.p1Score}</p>
-            <p>Player 2: {scores.p2Score}</p>
-            <button onClick={increaseP1Scores}>+1 Player 1</button>
-            <button onClick={increaseP2Scores}>+1 Player 2</button>
+            <h1>Score Keeper</h1>
+            <ul>
+                {scores.map((score, idx) => {
+                    return (
+                        <li key={idx}>
+                            Player{idx + 1} : {score}
+                            <button onClick={() => incrementScore(idx)}>
+                                +1
+                            </button>
+                            {score >= target && "Winner!"}
+                        </li>
+                    );
+                })}
+            </ul>
+            <button onClick={reset}>Reset</button>
         </div>
     );
 };

@@ -10,8 +10,8 @@ function App() {
             {/* <h1>State Demo!</h1>
             <Counter></Counter>
             <Dumbo></Dumbo> */}
-            {/* <ScoreKeeper></ScoreKeeper> */}
-            <EmojiClicker></EmojiClicker>
+            <ScoreKeeper numPlayes={4} target={3}></ScoreKeeper>
+            {/* <EmojiClicker></EmojiClicker> */}
         </>
     );
 }
